@@ -645,7 +645,8 @@ class _MainPageState extends State<MainPage> {
               ? Container(
                   decoration: const BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage('assets/background2.png'))),
+                          image: AssetImage('assets/background2.png'),
+                          fit: BoxFit.cover)),
                   child: Column(children: [
                     Padding(
                       padding:
@@ -973,7 +974,8 @@ class _MainPageState extends State<MainPage> {
               : Container(
                   decoration: const BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage('assets/background2.png'))),
+                          image: AssetImage('assets/background2.png'),
+                          fit: BoxFit.cover)),
                   child: Column(children: [
                     Padding(
                       padding:
