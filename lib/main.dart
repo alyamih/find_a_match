@@ -1,6 +1,7 @@
 import 'dart:isolate';
 
 import 'package:device_preview/device_preview.dart';
+import 'package:find_a_match/pages/main_page.dart';
 import 'package:find_a_match/pages/onBoarding.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -14,13 +15,11 @@ void main() async {
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
   SharedPreferences preferences = await SharedPreferences.getInstance();
-  // preferences.clear();
+  //preferences.clear();
   initScreen = preferences.getInt('initScreen');
   await preferences.setInt('initScreen', 1);
-  runApp(DevicePreview(
-    builder: (context) => const MyApp(), // Wrap your app
-  ));
-  //runApp(const MyApp());
+
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -36,7 +35,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const OnBoardingPage(),
+      home: initScreen == 0 || initScreen == null
+          ? const OnBoardingPage()
+          : const MainPage(),
     );
   }
 }
